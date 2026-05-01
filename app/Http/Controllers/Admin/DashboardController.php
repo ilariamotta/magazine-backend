@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Author;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
