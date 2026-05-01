@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string("cover_image")->nullable();
             $table->boolean("is_published")->default(false);
             $table->dateTime("published_at")->nullable();
-            $table->foreignId("author_id")->nullable()->unique()->constrained()->restrictOnDelete();
+            $table->foreignId("author_id")->nullable()->constrained()->restrictOnDelete();
             $table->timestamps();
         });
     }
