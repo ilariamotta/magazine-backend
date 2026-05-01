@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model
 {
+    public function user() {
+        return $this->belongsTo(User::class); 
+    }
 
+    public function article(){
+        return $this->hasMany(Article::class); 
+    }
 }
