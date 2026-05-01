@@ -15,9 +15,9 @@ class DashboardController extends Controller
         $draftArticleCount = Article::where("is_published", false)->count();
         $authorsCount= Author::count();
         $categoriesCount= Category::count();
-        $latestArticles = Article::orderBy("published_at", desc)->take(5)->get();
+        $latestArticles = Article::orderBy("published_at", "desc")->take(5)->get();
 
-        return view("admin.dashboard", compact(articleCount, publishedArticleCount, draftArticleCount, authorsCount, categoriesCount, latestArticles));
+        return view("admin.dashboard", compact('articleCount', 'publishedArticleCount', 'draftArticleCount', 'authorsCount', 'categoriesCount', 'latestArticles'));
 
     }
 }
