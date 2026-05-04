@@ -1,1 +1,144 @@
-@import '~bootstrap/scss/bootstrap';
+
+@import "bootstrap/scss/bootstrap";
+// PALETTE
+
+$bg-main: #f7f8ff;
+$bg-card: #ffffff;
+
+$text-main: #171827;
+$text-muted-pixel: #74798c;
+
+$neon-pink: #ff4fa3;
+$neon-cyan: #00c8ff;
+$neon-purple: #8b5cf6;
+$neon-yellow: #ffd43b;
+$neon-green: #00d084;
+$neon-orange: #ff8a2a;
+
+
+// ADMIN
+.admin-shell {
+    min-height: 100vh;
+    color: $text-main;
+    background-color: $bg-main;
+    background-image:
+        linear-gradient(rgba($neon-purple, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba($neon-purple, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+}
+
+.admin-sidebar {
+    min-height: 100vh;
+}
+
+.admin-main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-header {
+    z-index: 10;
+}
+
+.admin-content {
+    flex: 1;
+    min-height: calc(100vh - 130px);
+}
+
+.admin-brand {
+    font-weight: 800;
+    letter-spacing: .04em;
+    color: $text-main;
+
+    span {
+        color: $neon-pink;
+    }
+}
+
+.admin-nav-link {
+    display: block;
+    color: $text-muted-pixel;
+    font-weight: 600;
+    text-decoration: none;
+    padding: .65rem 1rem;
+    border-radius: 1rem;
+    margin-bottom: .5rem;
+    transition: all .2s ease;
+
+    &:hover,
+    &.active {
+        color: $neon-pink;
+        background-color: rgba($neon-pink, .1);
+    }
+}
+
+.admin-card,
+.stat-card {
+    background-color: $bg-card;
+}
+
+.stat-card {
+    border: 1px solid rgba($text-main, .06) !important;
+}
+
+.stat-title {
+    letter-spacing: .02em;
+}
+
+.text-pink {
+    color: $neon-pink;
+}
+
+.text-green {
+    color: $neon-green;
+}
+
+.text-yellow {
+    color: $neon-yellow;
+}
+
+.text-cyan {
+    color: $neon-cyan;
+}
+
+.text-purple {
+    color: $neon-purple;
+}
+
+.text-orange {
+    color: $neon-orange;
+}
+
+.bg-muted {
+    background-color: $text-muted-pixel;
+}
+
+.bg-rounded-pill {
+    background-color: $bg-main;
+}
+
+.btn-pixel {
+    color: #fff;
+    background-color: $neon-pink;
+    border-color: $neon-pink;
+    font-weight: 700;
+
+    &:hover {
+        color: #fff;
+        background-color: darken($neon-pink, 8%);
+        border-color: darken($neon-pink, 8%);
+    }
+}
+
+.btn-outline-pixel {
+    color: $neon-pink;
+    border-color: $neon-pink;
+    font-weight: 700;
+
+    &:hover {
+        color: #fff;
+        background-color: $neon-pink;
+        border-color: $neon-pink;
+    }
+}
