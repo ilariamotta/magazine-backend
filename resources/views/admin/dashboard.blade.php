@@ -12,6 +12,8 @@
         </p>
     </div>
 
+    
+
    {{-- CARD STATISTICHE --}}
 <div class="row g-3 mb-4">
 
@@ -62,6 +64,27 @@
 
 </div>
 
+  {{-- AZIONI RAPIDE --}}
+    <div class="card admin-card border-0 shadow-sm rounded-4 mb-4">
+        <div class="card-body p-4">
+            <h5 class="fw-bold mb-3">Azioni rapide</h5>
+
+            <div class="d-flex flex-column flex-sm-row gap-3">
+                <button type="button" class="btn btn-outline-dark px-4 py-2">
+                    + Aggiungi articolo
+                </button>
+
+                <button type="button" class="btn btn-outline-dark px-4 py-2">
+                    + Aggiungi categoria
+                </button>
+
+                <button type="button" class="btn btn-outline-dark px-4 py-2">
+                    + Aggiungi autore
+                </button>
+            </div>
+        </div>
+    </div>
+
     {{-- ARTICOLI RECENTI --}}
     <div class="card admin-card border-0 shadow-sm rounded-4 mb-4">
         <div class="card-header bg-white border-0 pt-4 px-4">
@@ -79,11 +102,12 @@
                             <th>Titolo</th>
                             <th>Autore</th>
                             <th>Stato</th>
+                            <th>Azioni</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @forelse($latestArticles as $article)
+                        @foreach($latestArticles as $article)
                             <tr>
                                 <td>
                                     <div class="fw-semibold">
@@ -107,48 +131,27 @@
 
                                 <td>
                                     @if($article->is_published)
-                                        <span class="badge rounded-pill text-green bg-rounded-pill">
+                                        <span class="badge rounded-pill text-green bg-rounded-pill shadow-sm">
                                             Pubblicato
                                         </span>
                                     @else
-                                        <span class="badge rounded-pill text-yellow bg-rounded-pill">
+                                        <span class="badge rounded-pill text-yellow bg-rounded-pill shadow-sm">
                                             Bozza
                                         </span>
                                     @endif
                                 </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="3" class="text-muted">
-                                    Non ci sono ancora articoli.
-                                </td>
-                            </tr>
-                        @endforelse
+                           <td>
+                <button class="btn btn-outline-pixel btn-sm">
+                    Vedi
+                </button>
+            </td>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    {{-- AZIONI RAPIDE --}}
-    <div class="card admin-card border-0 shadow-sm rounded-4">
-        <div class="card-body p-4">
-            <h5 class="fw-bold mb-3">Azioni rapide</h5>
-
-            <div class="d-flex flex-column flex-sm-row gap-3">
-                <button type="button" class="btn btn-outline-dark px-4 py-2">
-                    + Aggiungi articolo
-                </button>
-
-                <button type="button" class="btn btn-outline-dark px-4 py-2">
-                    + Aggiungi categoria
-                </button>
-
-                <button type="button" class="btn btn-outline-dark px-4 py-2">
-                    + Aggiungi autore
-                </button>
-            </div>
-        </div>
-    </div>
+  
 
 @endsection
