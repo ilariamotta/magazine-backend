@@ -24,6 +24,14 @@
             <div class="badge rounded-pill align-self-start mb-3 {{ $article->is_published ? 'text-green' : 'text-yellow' }} bg-rounded-pill shadow-sm inline-block">{{ $article->is_published ? 'Pubblicato' : 'Bozza' }}</div>
             <h1 class="fw-bold mb-1">{{ $article->title }}</h1>
             <span class="mb-3">{{ $article->subtitle }}</span>
+            @if ($article->image)
+                <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}" class="img-fluid mb-3">
+            @endif
+
+            @if($article->cover_image)
+    <img src="{{ asset('storage/' . $article->cover_image) }}" alt="{{ $article->title }}" class="img-fluid rounded-4 mb-4">
+@endif
+
             <span class="small text-muted mb-1">Scritto da: {{ $article->author->name }}</span>
             <span class="small text-muted mb-3">Pubblicato il: {{ $article->published_at}}</span>
             <p>{{ $article->content }}</p>
@@ -31,7 +39,7 @@
             <a href="{{ route('admin.articles.edit', $article) }}" class="btn btn-outline-pixel btn-sm mt-3">
                 Modifica
             </a>
-            <button type="button" class="btn btn-outline-dark mt-3 btn-sm" data-toggle="modal" data-bs-target="#deleteArticleModal">
+            <button type="button" class="btn btn-outline-dark mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#deleteArticleModal">
                 Elimina
                 </button>
 

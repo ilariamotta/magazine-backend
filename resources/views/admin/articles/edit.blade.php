@@ -19,7 +19,7 @@
                 <h1 class="fw-bold mb-1">Modifica l'articolo</h1>
                 <p class="text-muted mb-4">Modifica il contenuto già esistente.</p>
 
-                <form action="{{ route('admin.articles.update', $article) }}" method="POST">
+                <form action="{{ route('admin.articles.update', $article) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
 
@@ -45,10 +45,19 @@
                         </select>
                     </div>
 
-                    {{-- <div class="mb-3">
+                    <div class="mb-3">
                         <label for="cover_image" class="form-label fw-semibold">Immagine di copertina</label>
                         <input type="file" id="cover_image" name="cover_image" class="form-control input-pixel">
-                    </div> --}}
+                    </div>
+
+                    @if ($article->cover_image)
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Immagine attuale</label>
+                            <div>
+                                <img src="{{ asset('storage/' . $article->cover_image) }}" alt="{{ $article->title }}" class="img-fluid rounded-4">
+                            </div>
+                        </div>
+                    @endif
 
                     <div class="mb-3">
                         <label for="content" class="form-label fw-semibold">Contenuto</label>

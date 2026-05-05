@@ -8,6 +8,7 @@ use App\Models\Author;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -32,14 +33,22 @@ public function store(Request $request) {
 
     $newArticle->title = $request->title;
     $newArticle->slug = Str::slug($request->title, '-');
+    $newArticle->subtitle = $request->subtitle;
     $newArticle->content = $request->content;
     $newArticle->author_id = $request->author_id;
     $newArticle->is_published = $request->is_published ? true : false;
+
     if ($newArticle->is_published) {
         $newArticle->published_at = now();
     } else {
         $newArticle->published_at = null;
     }
+
+    if (array_key_exists('cover_image', $request->all( ))) {
+        $img_url = Storage::putFile('public/articles', $request['cover_image']);
+        $newArticle->cover_image = $img_url;
+    }
+
 
     
     $newArticle->save();
@@ -67,14 +76,22 @@ public function update(Request $request, Article $article)
     $article->subtitle = $data['subtitle'];
     $article->content = $data['content'];
     $article->author_id = $data['author_id'];
-
     $article->is_published = $data['is_published'] == 1;
-
     if ($article->is_published) {
         $article->published_at = now();
     } else {
         $article->published_at = null;
     }
+
+       if (array_key_exists('cover_image', $data)) {
+        if ($article->cover_image) {
+            Storage::delete($article->cover_image);
+        }
+
+        $img_url = Storage::putFile('public/articles', $data['cover_image']);
+        $article->cover_image = $img_url;
+    }
+
 
     $article->save();
 
