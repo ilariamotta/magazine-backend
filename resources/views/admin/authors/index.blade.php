@@ -81,12 +81,12 @@
 
                                 <td>
 
-                                {{-- <a href="{{ route('admin.articles.show', $article) }}" class="btn btn-outline-pixel btn-sm mb-1">
+                                <a href="{{ route('admin.authors.show', $author) }}" class="btn btn-outline-pixel btn-sm mb-1">
                                     Vedi</a>
                            
-            <a href="{{ route('admin.articles.edit', $article) }}" class="btn btn-outline-pixel btn-sm mb-1">
+            {{-- <a href="{{ route('admin.authors.edit', $author) }}" class="btn btn-outline-pixel btn-sm mb-1">
                 Modifica</a>
-            <button type="button" class="btn btn-outline-dark mb-1 btn-sm" data-bs-toggle="modal" data-bs-target="#deleteArticleModal">
+            <button type="button" class="btn btn-outline-dark mb-1 btn-sm" data-bs-toggle="modal" data-bs-target="#deleteAuthorModal">
                 Elimina</button> --}}
 
         </div>
@@ -99,18 +99,18 @@
         </div>
     </div>
 {{-- modale --}}
-{{-- <div class="modal fade" id="deleteArticleModal" tabindex="-1" aria-labelledby="deleteArticleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="deleteAuthorModal" tabindex="-1" aria-labelledby="deleteAuthorModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow">
             <div class="modal-header">
-                <h5 class="modal-title fw-bold" id="deleteArticleModalLabel">
-                    Sei sicuro di voler eliminare l'articolo?</h5>
+                <h5 class="modal-title fw-bold" id="deleteAuthorModalLabel">
+                    Sei sicuro di voler eliminare l'autore?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
             </div>
             <div class="modal-body">
                 <p class="mb-0">
-                    Stai eliminando l'articolo:
-                    <strong>{{ $article->title }}</strong>
+                    Stai eliminando l'autore:
+                    <strong>{{ $author->name }}</strong>
                 </p>
             </div>
             <div class="modal-footer">
@@ -118,7 +118,7 @@
                     Annulla
                 </button>
 
-                <form action="{{ route('admin.articles.destroy', $article) }}" method="POST">
+                <form action="{{ route('admin.authors.destroy', $author) }}" method="POST">
                     @csrf
                     @method("DELETE")
                     <input type="submit" value="Elimina" class="btn btn-outline-pixel btn-sm">
