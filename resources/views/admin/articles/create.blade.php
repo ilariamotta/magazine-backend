@@ -24,12 +24,12 @@
 
                     <div class="mb-3">
                         <label for="title" class="form-label fw-semibold">Titolo</label>
-                        <input type="text" id="title" name="title" class="form-control input-pixel" value="{{ old('title') }}">
+                        <input type="text" id="title" name="title" class="form-control input-pixel" value="title">
                     </div>
 
                     <div class="mb-3">
                         <label for="subtitle" class="form-label fw-semibold">Sottotitolo</label>
-                        <input type="text" id="subtitle" name="subtitle" class="form-control input-pixel" value="{{ old('subtitle') }}">
+                        <input type="text" id="subtitle" name="subtitle" class="form-control input-pixel" value="subtitle">
                     </div>
 
                     <div class="mb-3">
@@ -51,7 +51,7 @@
 
                     <div class="mb-3">
                         <label for="content" class="form-label fw-semibold">Contenuto</label>
-                        <textarea id="content" name="content" rows="8" class="form-control input-pixel">{{ old('content') }}</textarea>
+                        <textarea id="content" name="content" rows="8" class="form-control input-pixel">
                     </div>
 
                     <div class="mb-4">

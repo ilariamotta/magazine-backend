@@ -142,3 +142,42 @@ $neon-orange: #ff8a2a;
         border-color: $neon-pink;
     }
 }
+
+// FORM
+.input-pixel {
+    border-radius: 1rem;
+    border: 1px solid rgba($text-main, 0.12);
+    background-color: $bg-card;
+    color: $text-main;
+    transition: all .2s ease;
+
+    &:focus {
+        border-color: $neon-pink;
+        box-shadow: 0 0 0 .2rem rgba($neon-pink, 0.18);
+    }
+}
+
+textarea.input-pixel {
+    resize: vertical;
+}
+
+.category-check {
+    border: 1px solid rgba($text-main, 0.08);
+    background-color: $bg-card;
+    transition: all .2s ease;
+
+    &:hover {
+        border-color: rgba($neon-pink, 0.45);
+        background-color: rgba($neon-pink, 0.03);
+    }
+}
+
+.form-check-input:checked {
+    background-color: $neon-pink;
+    border-color: $neon-pink;
+}
+
+.form-check-input:focus {
+    border-color: $neon-pink;
+    box-shadow: 0 0 0 .2rem rgba($neon-pink, 0.18);
+}

@@ -25,7 +25,7 @@
             <h1 class="fw-bold mb-1">{{ $article->title }}</h1>
             <span class="mb-3">{{ $article->subtitle }}</span>
             <span class="small text-muted mb-1">Scritto da: {{ $article->author->name }}</span>
-            <span class="small text-muted mb-3">Creato il: {{ $article->published_at}}</span>
+            <span class="small text-muted mb-3">Pubblicato il: {{ $article->published_at}}</span>
             <p>{{ $article->content }}</p>
 <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="{{ route('admin.articles.edit', $article) }}" class="btn btn-outline-pixel btn-sm mt-3">

@@ -49,5 +49,38 @@ public function store(Request $request) {
     return redirect()->route('admin.articles.show', $newArticle);
 }
 
+public function edit(Article $article){
+    $authors = Author::all();
+    $categories = Category::all();
+
+    $article->load('categories');
+
+    return view('admin.articles.edit', compact('authors', 'categories', 'article'));
 }
 
+public function update(Request $request, Article $article)
+{
+    $data = $request->all();
+
+    $article->title = $data['title'];
+    $article->slug = Str::slug($data['title'], '-');
+    $article->subtitle = $data['subtitle'];
+    $article->content = $data['content'];
+    $article->author_id = $data['author_id'];
+
+    $article->is_published = $data['is_published'] == 1;
+
+    if ($article->is_published) {
+        $article->published_at = now();
+    } else {
+        $article->published_at = null;
+    }
+
+    $article->save();
+
+    $article->categories()->sync($data['categories']);
+
+    return redirect()->route('admin.articles.show', $article);
+}
+
+}
