@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Article extends Model
 {
+
+public function getRouteKeyName()
+{
+    return 'slug';
+}
+
 public function author() {
     return $this->belongsTo(Author::class);
 }

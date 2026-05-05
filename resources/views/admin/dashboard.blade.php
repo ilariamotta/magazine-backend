@@ -141,9 +141,9 @@
                                     @endif
                                 </td>
                            <td>
-                <button class="btn btn-outline-pixel btn-sm">
+                <a href="{{ route('admin.articles.show', $article) }}" class="btn btn-outline-pixel btn-sm mb-1">
                     Vedi
-                </button>
+                </a>
             </td>
                         @endforeach
                     </tbody>

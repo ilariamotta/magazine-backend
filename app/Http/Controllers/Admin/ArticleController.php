@@ -13,4 +13,9 @@ class ArticleController extends Controller
         $articles = Article::all();
         return view('admin.articles.index', compact('articles'));
     }
+
+    public function show(Article $article) {
+    return view('admin.articles.show', compact ('article'));
 }
+}
+

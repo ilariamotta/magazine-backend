@@ -91,13 +91,13 @@
 
                                 <td>
 
-                                <a href="{{ route('admin.articles.show', $article->id) }}" class="btn btn-outline-pixel btn-sm">
+                                <a href="{{ route('admin.articles.show', $article) }}" class="btn btn-outline-pixel btn-sm mb-1">
                                     Vedi
                                 </a>
-                                <a href="{{ route('admin.articles.edit', $article->id) }}" class="btn btn-outline-pixel btn-sm">
+                                <a href="{{ route('admin.articles.edit', $article) }}" class="btn btn-outline-pixel btn-sm mb-1">
                                     Modifica
                                 </a>
-                                <a href="{{ route('admin.articles.destroy', $article->id) }}" class="btn btn-outline-dark btn-sm">
+                                <a href="{{ route('admin.articles.destroy', $article) }}" class="btn btn-outline-dark btn-sm mb-1">
                                     Elimina
                                 </a>
                                 </td>
