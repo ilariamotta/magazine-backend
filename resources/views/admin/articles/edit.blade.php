@@ -38,7 +38,7 @@
                         <select name="author_id" id="author_id" class="form-select input-pixel">
                             <option value="">Seleziona un autore</option>
                             @foreach ($authors as $author)
-                                <option value="{{ $author->id }}" @selected($article->author_id == $author->id)">
+                                <option value="{{ $author->id }}" @selected($article->author_id == $author->id)>
                                     {{ $author->name }}
                                 </option>
                             @endforeach
