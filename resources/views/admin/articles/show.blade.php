@@ -31,13 +31,44 @@
             <a href="{{ route('admin.articles.edit', $article) }}" class="btn btn-outline-pixel btn-sm mt-3">
                 Modifica
             </a>
-            <a href="{{ route('admin.articles.destroy', $article) }}" class="btn btn-pixel btn-sm mt-3">
+            <button type="button" class="btn btn-outline-dark mt-3 btn-sm" data-toggle="modal" data-bs-target="#deleteArticleModal">
                 Elimina
-            </a>
+                </button>
+
         </div>
             </div>
             {{-- fine card articolo --}}
        
+        </div>
+    </div>
+</div>
+
+{{-- modale --}}
+<div class="modal fade" id="deleteArticleModal" tabindex="-1" aria-labelledby="deleteArticleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="deleteArticleModalLabel">
+                    Sei sicuro di voler eliminare l'articolo?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-0">
+                    Stai eliminando l'articolo:
+                    <strong>{{ $article->title }}</strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">
+                    Annulla
+                </button>
+
+                <form action="{{ route('admin.articles.destroy', $article) }}" method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <input type="submit" value="Elimina" class="btn btn-outline-pixel btn-sm">
+                </form>
+            </div>
         </div>
     </div>
 </div>

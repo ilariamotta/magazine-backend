@@ -83,4 +83,10 @@ public function update(Request $request, Article $article)
     return redirect()->route('admin.articles.show', $article);
 }
 
+public function destroy(Article $article) {
+    $article->delete();
+
+    return redirect()->route('admin.articles.index');
+}
+
 }
