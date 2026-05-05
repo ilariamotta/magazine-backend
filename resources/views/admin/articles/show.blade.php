@@ -23,7 +23,7 @@
         <div class="bg-white rounded-4 shadow-sm p-4 p-md-5 d-flex flex-column">
             <div class="badge rounded-pill align-self-start mb-3 {{ $article->is_published ? 'text-green' : 'text-yellow' }} bg-rounded-pill shadow-sm inline-block">{{ $article->is_published ? 'Pubblicato' : 'Bozza' }}</div>
             <h1 class="fw-bold mb-1">{{ $article->title }}</h1>
-            <span class="mb-3">{{ $article->subtitle }}</span>
+            <h2 class="mb-3">{{ $article->subtitle }}</h2>
             @if ($article->image)
                 <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}" class="img-fluid mb-3">
             @endif
@@ -35,13 +35,16 @@
             <span class="small text-muted mb-1">Scritto da: {{ $article->author->name }}</span>
             <span class="small text-muted mb-3">Pubblicato il: {{ $article->published_at}}</span>
             <p>{{ $article->content }}</p>
-<div class="d-flex justify-content-center gap-3 mt-4">
-            <a href="{{ route('admin.articles.edit', $article) }}" class="btn btn-outline-pixel btn-sm mt-3">
-                Modifica
-            </a>
-            <button type="button" class="btn btn-outline-dark mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#deleteArticleModal">
-                Elimina
-                </button>
+
+            <span>Categorie: @foreach ($article->categories as $category)
+                <span class="badge rounded-pill shadow-sm" style="background-color: {{ $category->color ?? '#6c757d' }}">{{ $category->name }}</span>
+                
+            @endforeach</span>
+
+            {{-- pulsanti --}}
+            <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="{{ route('admin.articles.edit', $article) }}" class="btn btn-outline-pixel btn-sm mt-3">Modifica</a>
+            <button type="button" class="btn btn-outline-dark mt-3 btn-sm" data-bs-toggle="modal" data-bs-target="#deleteArticleModal">Elimina</button>
 
         </div>
             </div>
