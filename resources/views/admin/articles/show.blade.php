@@ -8,6 +8,7 @@
 <div class="container">
     <div class="row justify-content-center">
              <div class="d-flex justify-content-center gap-3 mb-4">
+                {{-- link --}}
             <a href="{{ route('admin.articles.index') }}" class="btn btn-outline-dark btn-sm mt-3">
                 Torna agli articoli
             </a>
@@ -36,7 +37,6 @@
         </div>
             </div>
             {{-- fine card articolo --}}
-            {{-- link --}}
        
         </div>
     </div>

@@ -18,9 +18,9 @@
             <h5 class="fw-bold mb-3">Azioni rapide</h5>
 
             <div class="d-flex flex-column flex-sm-row gap-3">
-                <button type="button" class="btn btn-outline-dark px-4 py-2">
-                    + Aggiungi articolo
-                </button>
+                <a href="{{ route('admin.articles.create') }}" class="btn btn-outline-pixel px-4 py-2">
+                    + Aggiungi nuovo articolo
+                </a>
 
                 <button type="button" class="btn btn-outline-dark px-4 py-2">
                     + Aggiungi categoria
@@ -94,12 +94,12 @@
                                 <a href="{{ route('admin.articles.show', $article) }}" class="btn btn-outline-pixel btn-sm mb-1">
                                     Vedi
                                 </a>
-                                <a href="{{ route('admin.articles.edit', $article) }}" class="btn btn-outline-pixel btn-sm mb-1">
+                                {{-- <a href="{{ route('admin.articles.edit', $article) }}" class="btn btn-outline-pixel btn-sm mb-1">
                                     Modifica
                                 </a>
                                 <a href="{{ route('admin.articles.destroy', $article) }}" class="btn btn-outline-dark btn-sm mb-1">
                                     Elimina
-                                </a>
+                                </a> --}}
                                 </td>
                             </tr>
                         @endforeach
