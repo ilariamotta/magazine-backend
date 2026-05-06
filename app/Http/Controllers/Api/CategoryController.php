@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(){
-        {$categories = Category::with(['articles' => function($query){
+        $categories = Category::with(['articles' => function($query){
             $query->where('is_published', true);
         }])->get();
         
@@ -17,11 +17,11 @@ class CategoryController extends Controller
             "success"=>true,
             "data"=>$categories
         ]);
-        }
+        
     }
 
     public function show(Category $category) {
-        {$category->load(['articles'=>function($query) {
+        $category->load(['articles'=>function($query) {
             $query->where('is_published', true);
         }]);
         
@@ -29,6 +29,6 @@ class CategoryController extends Controller
             "success"=>true,
             "data"=>$category
         ]);
-        }
+        
     }
 }

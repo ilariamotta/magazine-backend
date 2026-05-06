@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class AuthorController extends Controller
 {
     public function index() {
-        {
+    
     $authors = Author::with(['articles' => function ($query) {
         $query->where('is_published', true);
     }])->get();
@@ -19,17 +19,16 @@ class AuthorController extends Controller
         'data' => $authors
     ]);
 }
-    }
-
-    public function show(Author $author)
-{
+    public function show(Author $author){
     $author->load(['articles' => function ($query) {
-        $query->where('is_published', true);
+    $query->where('is_published', true);
     }]);
 
     return response()->json([
-        'success' => true,
-        'data' => $author
+    'success' => true,
+    'data' => $author
     ]);
-}
+    }
+
+
 }
