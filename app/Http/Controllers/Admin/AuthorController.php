@@ -65,4 +65,6 @@ class AuthorController extends Controller
     return redirect()-> route('admin.authors.show', $author);
     
     }
+
+    
 }

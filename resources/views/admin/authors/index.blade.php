@@ -26,7 +26,7 @@
                     + Aggiungi categoria
                 </button>
 
-            <a href="{{ route('admin.articles.create') }}" class="btn btn-outline-dark px-4 py-2">
+                <a href="{{ route('admin.articles.create') }}" class="btn btn-outline-dark px-4 py-2">
                     + Aggiungi nuovo articolo
                 </a>
             </div>
@@ -55,21 +55,22 @@
                     </thead>
 
                     <tbody>
-                        @foreach($authors as $author)
+                        @foreach ($authors as $author)
                             <tr>
                                 <td>
                                     @if ($author->avatar_image)
-                                    <div class="rounded-circle overflow-hidden d-inline-block" style="width: 50px; height: 50px;">
-                                        {{ $author->avatar_image }}
-                                    </div>
-                                    @else 
-                                    <img src="https://t3.ftcdn.net/jpg/06/03/30/74/360_F_603307418_jya3zntHWjXWn3WHn7FOpjFevXwnVP52.jpg" alt="Avatar" class="rounded-circle" style="width: 50px; height: 50px;">
+                                        <img src="{{ asset('storage/' . $author->avatar_image) }}" alt="{{ $author->name }}"
+                                            class="rounded-circle shadow-sm"style="width: 50px; height: 50px; object-fit: cover;">
+                                    @else
+                                        <img src="https://t3.ftcdn.net/jpg/06/03/30/74/360_F_603307418_jya3zntHWjXWn3WHn7FOpjFevXwnVP52.jpg"
+                                            alt="Avatar di default" class="rounded-circle shadow-sm"
+                                            style="width: 50px; height: 50px; object-fit: cover;">
                                     @endif
                                 </td>
                                 <td>
-                                        <small class="text-muted">
-                                            {{ $author->name }}
-                                        </small>
+                                    <small class="text-muted">
+                                        {{ $author->name }}
+                                    </small>
 
                                 </td>
 
@@ -81,25 +82,26 @@
 
                                 <td>
 
-                                <a href="{{ route('admin.authors.show', $author) }}" class="btn btn-outline-pixel btn-sm mb-1">
-                                    Vedi</a>
-                           
-            {{-- <a href="{{ route('admin.authors.edit', $author) }}" class="btn btn-outline-pixel btn-sm mb-1">
+                                    <a href="{{ route('admin.authors.show', $author) }}"
+                                        class="btn btn-outline-pixel btn-sm mb-1">
+                                        Vedi</a>
+
+                                    {{-- <a href="{{ route('admin.authors.edit', $author) }}" class="btn btn-outline-pixel btn-sm mb-1">
                 Modifica</a>
             <button type="button" class="btn btn-outline-dark mb-1 btn-sm" data-bs-toggle="modal" data-bs-target="#deleteAuthorModal">
                 Elimina</button> --}}
 
-        </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
             </div>
+            </td>
+            </tr>
+            @endforeach
+            </tbody>
+            </table>
         </div>
     </div>
-{{-- modale --}}
-{{-- <div class="modal fade" id="deleteAuthorModal" tabindex="-1" aria-labelledby="deleteAuthorModalLabel" aria-hidden="true">
+    </div>
+    {{-- modale --}}
+    {{-- <div class="modal fade" id="deleteAuthorModal" tabindex="-1" aria-labelledby="deleteAuthorModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow">
             <div class="modal-header">
