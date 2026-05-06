@@ -32,6 +32,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+$request->validate([
+    'name' => 'required|string|max:255|unique:categories,name',
+    'color' => 'nullable|string|max:20',
+]);
         $newCategory = new Category();
         $newCategory->name = $request->name;
         $newCategory->slug = Str::slug($request->name, '-');
@@ -64,6 +68,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $request->validate([
+        'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
+        'color' => 'nullable|string|max:20',
+        ]);
+        
         $data = $request->all();
 
         $category->name = $data['name'];
@@ -82,4 +91,5 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('admin.categories.index');
     }
+
 }

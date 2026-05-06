@@ -29,6 +29,18 @@ public function create() {
 }
 
 public function store(Request $request) {
+
+    $request->validate([
+    'title' => 'required|string|max:255|unique:articles,title',
+    'subtitle' => 'nullable|string|max:255',
+    'content' => 'required|string',
+    'author_id' => 'required|exists:authors,id',
+    'categories' => 'required|array|min:1',
+    'categories.*' => 'exists:categories,id',
+    'is_published' => 'required|boolean',
+    'cover_image' => 'nullable|image|max:2048',
+    ]);
+
     $newArticle = new Article();
 
     $newArticle->title = $request->title;
@@ -69,6 +81,18 @@ public function edit(Article $article){
 
 public function update(Request $request, Article $article)
 {
+
+    $request->validate([
+    'title' => 'required|string|max:255|unique:articles,title,' . $article->id,
+    'subtitle' => 'nullable|string|max:255',
+    'content' => 'required|string',
+    'author_id' => 'required|exists:authors,id',
+    'categories' => 'required|array|min:1',
+    'categories.*' => 'exists:categories,id',
+    'is_published' => 'required|boolean',
+    'cover_image' => 'nullable|image|max:2048',
+    ]);
+
     $data = $request->all();
 
     $article->title = $data['title'];

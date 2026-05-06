@@ -27,6 +27,14 @@ class AuthorController extends Controller
     }
 
     public function store (Request $request) {
+
+    $request->validate([
+    'name' => 'required|string|max:255|unique:authors,name',
+    'email' => 'required|email|max:255|unique:authors,email',
+    'bio' => 'nullable|string',
+    'avatar_image' => 'nullable|image|max:2048',
+    ]);
+
         $newAuthor = New Author();
 
         $newAuthor->name = $request->name;
@@ -49,6 +57,14 @@ class AuthorController extends Controller
     }
 
     public function update(Request $request, Author $author) {
+
+        $request->validate([
+        'name' => 'required|string|max:255|unique:authors,name,' . $author->id,
+        'email' => 'required|email|max:255|unique:authors,email,' . $author->id,
+        'bio' => 'nullable|string',
+        'avatar_image' => 'nullable|image|max:2048',
+        ]);
+        
         $data = $request->all();
         $author->name = $data['name'];
         $author->slug = Str::slug($data['name'], '-');
