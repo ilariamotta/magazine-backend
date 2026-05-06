@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -12,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+    $categories = Category::all();
+    return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -20,7 +23,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.categories.create', compact('categories'));
     }
 
     /**
@@ -28,7 +32,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newCategory = new Category();
+        $newCategory->name = $request->name;
+        $newCategory->slug = Str::slug($request->name, '-');
+        $newCategory->color = $request->color;
+
+        $newCategory->save();
+        return redirect()->route('admin.categories.index');
+
     }
 
     /**
@@ -42,24 +53,33 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        $categories = Category::all();
+        return view('admin.categories.edit', compact('category', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $data = $request->all();
+
+        $category->name = $data['name'];
+        $category->slug = Str::slug($data['name'], '-');
+        $category->color = $data['color'];
+        $category->save();
+        return redirect()->route('admin.categories.index'); 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->articles()->detach();
+        $category->delete();
+        return redirect()->route('admin.categories.index');
     }
 }

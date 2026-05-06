@@ -47,7 +47,7 @@
 </div>
 
 {{-- modale --}}
-{{-- <div class="modal fade" id="deleteAuthorModal" tabindex="-1" aria-labelledby="deleteAuthorModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteAuthorModal" tabindex="-1" aria-labelledby="deleteAuthorModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow">
             <div class="modal-header">
@@ -74,5 +74,5 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 @endsection

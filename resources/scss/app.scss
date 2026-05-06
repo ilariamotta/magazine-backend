@@ -184,3 +184,12 @@ textarea.input-pixel {
     border-color: $neon-pink;
     box-shadow: 0 0 0 .2rem rgba($neon-pink, 0.18);
 }
+
+// CATEGORIES PAGE
+
+.category-mini-badge {
+    display: inline-block;
+    background-color: #fff;
+    border: 1px solid;
+    font-size: .85rem;
+}

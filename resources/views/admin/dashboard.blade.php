@@ -70,17 +70,13 @@
             <h5 class="fw-bold mb-3">Azioni rapide</h5>
 
             <div class="d-flex flex-column flex-sm-row gap-3">
-                <button type="button" class="btn btn-outline-dark px-4 py-2">
-                    + Aggiungi articolo
-                </button>
+                <a href="{{ route('admin.articles.create') }}" class="btn btn-outline-dark px-4 py-2">+ Aggiungi nuovo articolo</a>
 
                 <button type="button" class="btn btn-outline-dark px-4 py-2">
                     + Aggiungi categoria
                 </button>
 
-                <button type="button" class="btn btn-outline-dark px-4 py-2">
-                    + Aggiungi autore
-                </button>
+                 <a href="{{ route('admin.authors.create') }}" class="btn btn-outline-dark px-4 py-2">+ Aggiungi nuovo autore</a>
             </div>
         </div>
     </div>

@@ -82,14 +82,9 @@
 
                                 <td>
 
-                                    <a href="{{ route('admin.authors.show', $author) }}"
-                                        class="btn btn-outline-pixel btn-sm mb-1">
-                                        Vedi</a>
-
-                                    {{-- <a href="{{ route('admin.authors.edit', $author) }}" class="btn btn-outline-pixel btn-sm mb-1">
-                Modifica</a>
-            <button type="button" class="btn btn-outline-dark mb-1 btn-sm" data-bs-toggle="modal" data-bs-target="#deleteAuthorModal">
-                Elimina</button> --}}
+                                    <a href="{{ route('admin.authors.show', $author) }}"class="btn btn-outline-pixel btn-sm mb-1">Vedi</a>
+                                    <a href="{{ route('admin.authors.edit', $author) }}"class="btn btn-outline-pixel btn-sm mb-1">Modifica</a>
+                                    <button type="button" class="btn btn-outline-dark mb-1 btn-sm" data-bs-toggle="modal"data-bs-target="#deleteAuthorModal">Elimina</button>
 
             </div>
             </td>
@@ -101,7 +96,7 @@
     </div>
     </div>
     {{-- modale --}}
-    {{-- <div class="modal fade" id="deleteAuthorModal" tabindex="-1" aria-labelledby="deleteAuthorModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteAuthorModal" tabindex="-1" aria-labelledby="deleteAuthorModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow">
             <div class="modal-header">
@@ -128,5 +123,5 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 @endsection
