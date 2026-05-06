@@ -43,4 +43,26 @@ class AuthorController extends Controller
 
 
     }
+
+    public function edit(Author $author) {
+        return view('admin.authors.edit', compact('author'));
+    }
+
+    public function update(Request $request, Author $author) {
+        $data = $request->all();
+        $author->name = $data['name'];
+        $author->slug = Str::slug($data['name'], '-');
+        $author->email = $data['email'];
+               if (array_key_exists('avatar_image', $data)) {
+        if ($author->avatar_image) {
+            Storage::delete($author->avatar_image);
+        }
+        $img_url = Storage::putFile('public/authors', $data['avatar_image']);
+        $author->avatar_image = $img_url;
+    }
+
+    $author->save();
+    return redirect()-> route('admin.authors.show', $author);
+    
+    }
 }

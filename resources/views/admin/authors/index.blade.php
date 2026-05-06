@@ -59,7 +59,7 @@
                             <tr>
                                 <td>
                                     @if ($author->avatar_image)
-                                    <div class="rounded-circle overflow-hidden d-inline-block" style="width: 40px; height: 40px;">
+                                    <div class="rounded-circle overflow-hidden d-inline-block" style="width: 50px; height: 50px;">
                                         {{ $author->avatar_image }}
                                     </div>
                                     @else 

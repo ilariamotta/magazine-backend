@@ -23,9 +23,12 @@
         <div class="bg-white rounded-4 shadow-sm p-4 p-md-5 d-flex flex-column justify-content-center align-items-center">
              
             
-            @if($author->avatar_image)
-            <img src="{{ asset('storage/' . $author->avatar_image) }}" alt="{{ $author->name }}" class="overflow-hidden d-inline-block rounded-circle  overflow-hidden d-inline-block"  style="width: 200px;">
-            @endif
+        @if($author->avatar_image)
+    <img src="{{ asset('storage/' . $author->avatar_image) }}" alt="{{ $author->name }}" class="rounded-circle mb-4 shadow-sm"style="width: 200px; height: 200px; object-fit: cover;">
+        @else
+    <img src="{{ asset('img/default-avatar.png') }}" alt="Avatar di default" class="rounded-circle mb-4 shadow-sm"style="width: 200px; height: 200px; object-fit: cover;">
+        @endif
+
             <h1 class="fw-bold mb-1">{{ $author->name }}</h1>
             <h4 class="text-muted">{{ $author->email }}</h4>
             <p class="mt-3">{{ $author->bio }}</p>
