@@ -33,6 +33,9 @@ class AuthorController extends Controller
     'email' => 'required|email|max:255|unique:authors,email',
     'bio' => 'nullable|string',
     'avatar_image' => 'nullable|image|max:2048',
+    ], [
+        'name.required' => 'Il nome è obbligatorio',
+        'email.required' => 'Inserisci una mail valida',
     ]);
 
         $newAuthor = New Author();
@@ -40,6 +43,7 @@ class AuthorController extends Controller
         $newAuthor->name = $request->name;
         $newAuthor->slug = Str::slug($request->name, '-');
         $newAuthor->email = $request->email;
+        $newAuthor->bio = $request->bio;
 
          if (array_key_exists('avatar_image', $request->all( ))) {
         $img_url = Storage::putFile('public/authors', $request['avatar_image']);
@@ -63,6 +67,10 @@ class AuthorController extends Controller
         'email' => 'required|email|max:255|unique:authors,email,' . $author->id,
         'bio' => 'nullable|string',
         'avatar_image' => 'nullable|image|max:2048',
+        ],
+        [
+        'name.required' => 'Il nome è obbligatorio',
+        'email.required' => 'Inserisci una mail valida',
         ]);
         
         $data = $request->all();

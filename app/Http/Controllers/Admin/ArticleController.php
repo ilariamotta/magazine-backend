@@ -39,6 +39,13 @@ public function store(Request $request) {
     'categories.*' => 'exists:categories,id',
     'is_published' => 'required|boolean',
     'cover_image' => 'nullable|image|max:2048',
+    ], [
+        'title.required' => 'Devi scrivere un titolo',
+        'content.required' => 'Devi scrivere il corpo del testo',
+        'is_published.required' => 'Devi selezionare "bozza" o "pubblica"',
+        'author_id.required' => 'Devi selezionare un autore',
+        'categories.required' => 'Devi selezionare almeno una categoria',
+        'categories.min' => 'Devi selezionare almeno una categoria,'
     ]);
 
     $newArticle = new Article();
@@ -91,6 +98,13 @@ public function update(Request $request, Article $article)
     'categories.*' => 'exists:categories,id',
     'is_published' => 'required|boolean',
     'cover_image' => 'nullable|image|max:2048',
+    ],[
+        'title.required' => 'Devi scrivere un titolo',
+        'content.required' => 'Devi scrivere il corpo del testo',
+        'is_published.required' => 'Devi selezionare "bozza" o "pubblica"',
+        'author_id.required' => 'Devi selezionare un autore',
+        'categories.required' => 'Devi selezionare almeno una categoria',
+        'categories.min' => 'Devi selezionare almeno una categoria,'
     ]);
 
     $data = $request->all();

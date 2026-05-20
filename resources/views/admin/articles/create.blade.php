@@ -6,6 +6,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="d-flex justify-content-center gap-3 mb-4">
+
+            
+            
+            
             <a href="{{ route('admin.articles.index') }}" class="btn btn-outline-dark btn-sm mt-3">
                 Torna agli articoli
             </a>
@@ -13,6 +17,18 @@
                 Torna alla Dashboard
             </a>
         </div>
+        
+        {{-- se non viene compilato bene il form --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
 
         <div class="col-12 col-lg-9 col-xl-8">
             <div class="bg-white rounded-4 shadow-sm p-4 p-md-5">
@@ -27,6 +43,7 @@
                         <input type="text" id="title" name="title" class="form-control input-pixel">
                     </div>
 
+           
                     <div class="mb-3">
                         <label for="subtitle" class="form-label fw-semibold">Sottotitolo</label>
                         <input type="text" id="subtitle" name="subtitle" class="form-control input-pixel">
@@ -43,6 +60,8 @@
                             @endforeach
                         </select>
                     </div>
+
+                    
 
                     <div class="mb-3">
                         <label for="cover_image" class="form-label fw-semibold">Immagine di copertina</label>

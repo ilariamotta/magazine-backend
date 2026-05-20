@@ -14,6 +14,17 @@
             </a>
         </div>
 
+                {{-- se non viene compilato bene il form --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="col-12 col-lg-9 col-xl-8">
             <div class="bg-white rounded-4 shadow-sm p-4 p-md-5">
                 <h1 class="fw-bold mb-1">Modifica autore</h1>

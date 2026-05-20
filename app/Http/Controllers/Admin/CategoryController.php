@@ -35,6 +35,9 @@ class CategoryController extends Controller
 $request->validate([
     'name' => 'required|string|max:255|unique:categories,name',
     'color' => 'nullable|string|max:20',
+], [
+    'name.required' => 'Inserisci un nome per la categoria.',
+    'name.unique' => 'Esiste già una categoria con questo nome, scegline un altro',
 ]);
         $newCategory = new Category();
         $newCategory->name = $request->name;

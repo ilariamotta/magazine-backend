@@ -12,6 +12,17 @@
             <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-dark btn-sm mt-3">
                 Torna alla Dashboard</a>
         </div>
+
+                {{-- se non viene compilato bene il form --}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         
         <div class="col-12 col-xl-10">
             <div class="row g-4">           

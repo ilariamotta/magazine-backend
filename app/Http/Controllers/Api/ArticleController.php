@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ArticleController extends Controller
 {
     public function index() {
-        $articles = Article::with('author', 'categories')->where('is_published', true)->latest()->get();
+        $articles = Article::with('author', 'categories')->where('is_published', true)->latest('published_at')->get();
         return response()->json([
             "success"=>true,
             "data"=>$articles

@@ -22,9 +22,7 @@
                     + Aggiungi nuovo autore
                 </a>
 
-                <button type="button" class="btn btn-outline-dark px-4 py-2">
-                    + Aggiungi categoria
-                </button>
+            <a href="{{ route('admin.categories.create')}}" class='btn btn-outline-dark px-4 py-2'>+ Aggiungi categoria</a>
 
                 <a href="{{ route('admin.articles.create') }}" class="btn btn-outline-dark px-4 py-2">
                     + Aggiungi nuovo articolo
