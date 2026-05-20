@@ -27,6 +27,15 @@
         </div>
     </div>
 
+    {{-- SEARCH BAR --}}
+    <form action="{{ route('admin.articles.index') }}" method="GET" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="search" class="form-control input-pixel" placeholder="Cerca per titolo, sottotitolo o autore..." value="{{ $search ?? '' }}">
+        <button class="btn btn-outline-pixel" type="submit">Cerca</button>
+        <a href="{{ route('admin.articles.index') }}" class="btn btn-outline-dark">Reset</a>
+    </div>
+</form>
+
     {{-- LISTA ARTICOLI --}}
     <div class="card admin-card border-0 shadow-sm rounded-4 mb-4">
         <div class="card-header bg-white border-0 pt-4 px-4">

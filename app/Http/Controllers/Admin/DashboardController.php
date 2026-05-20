@@ -10,15 +10,38 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index() {
-        $articleCount= Article::count();
-        $publishedArticleCount = Article::where("is_published", true)->count();
-        $draftArticleCount = Article::where("is_published", false)->count();
-        $authorsCount= Author::count();
-        $categoriesCount= Category::count();
-        $latestArticles = Article::orderBy("published_at", "desc")->take(5)->get();
+    public function index(Request $request)
+{
+    $articleCount = Article::count();
+    $publishedArticleCount = Article::where("is_published", true)->count();
+    $draftArticleCount = Article::where("is_published", false)->count();
+    $authorsCount = Author::count();
+    $categoriesCount = Category::count();
 
-        return view("admin.dashboard", compact('articleCount', 'publishedArticleCount', 'draftArticleCount', 'authorsCount', 'categoriesCount', 'latestArticles'));
+    $search = $request->search;
 
+    $latestArticles = Article::with('author');
+
+    if ($search) {
+        $latestArticles->where('title', 'LIKE', '%' . $search . '%')
+            ->orWhere('subtitle', 'LIKE', '%' . $search . '%')
+            ->orWhereRelation('author', 'name', 'LIKE', '%' . $search . '%');
+    } else {
+        $latestArticles->orderBy('published_at', 'desc')->take(5);
     }
+
+    $latestArticles = $latestArticles->get();
+
+    return view('admin.dashboard', compact(
+        'articleCount',
+        'publishedArticleCount',
+        'draftArticleCount',
+        'authorsCount',
+        'categoriesCount',
+        'latestArticles',
+        'search'
+    ));
 }
+}
+
+
