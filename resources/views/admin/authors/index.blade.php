@@ -22,7 +22,8 @@
                     + Aggiungi nuovo autore
                 </a>
 
-            <a href="{{ route('admin.categories.create')}}" class='btn btn-outline-dark px-4 py-2'>+ Aggiungi categoria</a>
+                <a href="{{ route('admin.categories.create') }}" class='btn btn-outline-dark px-4 py-2'>+ Aggiungi
+                    categoria</a>
 
                 <a href="{{ route('admin.articles.create') }}" class="btn btn-outline-dark px-4 py-2">
                     + Aggiungi nuovo articolo
@@ -80,9 +81,12 @@
 
                                 <td>
 
-                                    <a href="{{ route('admin.authors.show', $author) }}"class="btn btn-outline-pixel btn-sm mb-1">Vedi</a>
-                                    <a href="{{ route('admin.authors.edit', $author) }}"class="btn btn-outline-pixel btn-sm mb-1">Modifica</a>
-                                    <button type="button" class="btn btn-outline-dark mb-1 btn-sm" data-bs-toggle="modal"data-bs-target="#deleteAuthorModal">Elimina</button>
+                                    <a
+                                        href="{{ route('admin.authors.show', $author) }}"class="btn btn-outline-pixel btn-sm mb-1">Vedi</a>
+                                    <a
+                                        href="{{ route('admin.authors.edit', $author) }}"class="btn btn-outline-pixel btn-sm mb-1">Modifica</a>
+                                    <button type="button" class="btn btn-outline-dark mb-1 btn-sm"
+                                        data-bs-toggle="modal"data-bs-target="#deleteAuthorModal{{ $author->id }}">Elimina</button>
 
             </div>
             </td>
@@ -93,33 +97,31 @@
         </div>
     </div>
     </div>
-    {{-- modale --}}
-    <div class="modal fade" id="deleteAuthorModal" tabindex="-1" aria-labelledby="deleteAuthorModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content rounded-4 border-0 shadow">
-            <div class="modal-header">
-                <h5 class="modal-title fw-bold" id="deleteAuthorModalLabel">
-                    Sei sicuro di voler eliminare l'autore?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
-            </div>
-            <div class="modal-body">
-                <p class="mb-0">
-                    Stai eliminando l'autore:
-                    <strong>{{ $author->name }}</strong>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">
-                    Annulla
-                </button>
-
-                <form action="{{ route('admin.authors.destroy', $author) }}" method="POST">
-                    @csrf
-                    @method("DELETE")
-                    <input type="submit" value="Elimina" class="btn btn-outline-pixel btn-sm">
-                </form>
+    {{-- modali eliminazione autori --}}
+    @foreach ($authors as $author)
+        <div class="modal fade" id="deleteAuthorModal{{ $author->id }}" tabindex="-1"
+            aria-labelledby="deleteAuthorModalLabel{{ $author->id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4 border-0 shadow">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="deleteAuthorModalLabel{{ $author->id }}">Sei sicuro di voler
+                            eliminare l'autore?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-0">Stai eliminando l'autore:<strong> {{ $author->name }}</strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Annulla</button>
+                        <form action="{{ route('admin.authors.destroy', $author) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Elimina" class="btn btn-outline-pixel btn-sm">
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    @endforeach
+
 @endsection
