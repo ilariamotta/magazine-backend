@@ -26,7 +26,7 @@ class ArticleController extends Controller
                 ->orWhereRelation('author', 'name', 'LIKE', '%' . $search . '%');
         }
 
-        $articles = $articles->get();
+           $articles = $articles->orderBy('created_at', 'desc')->get();
 
         return view('admin.articles.index', compact('articles', 'search'));
     }
