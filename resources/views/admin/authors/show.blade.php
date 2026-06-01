@@ -26,7 +26,7 @@
         @if($author->avatar_image)
     <img src="{{ asset('storage/' . $author->avatar_image) }}" alt="{{ $author->name }}" class="rounded-circle mb-4 shadow-sm"style="width: 200px; height: 200px; object-fit: cover;">
         @else
-    <img src="{{ asset('img/default-avatar.png') }}" alt="Avatar di default" class="rounded-circle mb-4 shadow-sm"style="width: 200px; height: 200px; object-fit: cover;">
+    <img src="https://t3.ftcdn.net/jpg/06/03/30/74/360_F_603307418_jya3zntHWjXWn3WHn7FOpjFevXwnVP52.jpg" alt="Avatar di default" class="rounded-circle mb-4 shadow-sm"style="width: 200px; height: 200px; object-fit: cover;">
         @endif
 
             <h1 class="fw-bold mb-1">{{ $author->name }}</h1>
