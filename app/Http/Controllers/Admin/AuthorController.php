@@ -32,10 +32,13 @@ class AuthorController extends Controller
     'name' => 'required|string|max:255|unique:authors,name',
     'email' => 'required|email|max:255|unique:authors,email',
     'bio' => 'nullable|string',
-    'avatar_image' => 'nullable|image|max:2048',
+    'avatar_image' => 'nullable|image|max:4096',
     ], [
         'name.required' => 'Il nome è obbligatorio',
         'email.required' => 'Inserisci una mail valida',
+        'email.email' => 'Inserisci una mail valida',
+        'avatar_image.image' => 'Il file deve essere un’immagine.',
+        'avatar_image.max' => 'L’immagine non può superare i 4 MB.',
     ]);
 
         $newAuthor = New Author();
@@ -66,11 +69,14 @@ class AuthorController extends Controller
         'name' => 'required|string|max:255|unique:authors,name,' . $author->id,
         'email' => 'required|email|max:255|unique:authors,email,' . $author->id,
         'bio' => 'nullable|string',
-        'avatar_image' => 'nullable|image|max:2048',
+        'avatar_image' => 'nullable|image|max:4096',
         ],
         [
         'name.required' => 'Il nome è obbligatorio',
         'email.required' => 'Inserisci una mail valida',
+        'email.email' => 'Inserisci una mail valida',
+        'avatar_image.image' => 'Il file deve essere un’immagine.',
+        'avatar_image.max' => 'L’immagine non può superare i 4 MB.',
         ]);
         
         $data = $request->all();
