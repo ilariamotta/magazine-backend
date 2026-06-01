@@ -55,14 +55,16 @@ class ArticleController extends Controller
             'categories' => 'required|array|min:1',
             'categories.*' => 'exists:categories,id',
             'is_published' => 'required|boolean',
-            'cover_image' => 'nullable|image|max:2048',
+            'cover_image' => 'nullable|image|max:4096',
         ], [
             'title.required' => 'Devi scrivere un titolo',
             'content.required' => 'Devi scrivere il corpo del testo',
             'is_published.required' => 'Devi selezionare "bozza" o "pubblica"',
             'author_id.required' => 'Devi selezionare un autore',
             'categories.required' => 'Devi selezionare almeno una categoria',
-            'categories.min' => 'Devi selezionare almeno una categoria,'
+            'categories.min' => 'Devi selezionare almeno una categoria',
+            'cover_image.image' => 'Il file deve essere un’immagine.',
+            'cover_image.max' => 'L’immagine di copertina non può superare i 4 MB.',
         ]);
 
         $newArticle = new Article();
@@ -115,14 +117,16 @@ class ArticleController extends Controller
             'categories' => 'required|array|min:1',
             'categories.*' => 'exists:categories,id',
             'is_published' => 'required|boolean',
-            'cover_image' => 'nullable|image|max:2048',
+            'cover_image' => 'nullable|image|max:4096',
         ], [
             'title.required' => 'Devi scrivere un titolo',
             'content.required' => 'Devi scrivere il corpo del testo',
             'is_published.required' => 'Devi selezionare "bozza" o "pubblica"',
             'author_id.required' => 'Devi selezionare un autore',
             'categories.required' => 'Devi selezionare almeno una categoria',
-            'categories.min' => 'Devi selezionare almeno una categoria,'
+            'categories.min' => 'Devi selezionare almeno una categoria',
+            'cover_image.image' => 'Il file deve essere un’immagine.',
+            'cover_image.max' => 'L’immagine di copertina non può superare i 4 MB.',
         ]);
 
         $data = $request->all();
